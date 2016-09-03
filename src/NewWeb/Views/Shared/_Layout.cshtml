@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>NewWeb-@ViewBag.Title</title>
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootswatch/spacelab/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="menu" class="navbar-static-top navbar">
+        <ul class="nav navbar-nav">
+            <li class="active"><a asp-controller="App" asp-action="Index">Home</a></li>
+            <li><a asp-controller="App" asp-action="About">About</a></li>
+            <li><a asp-controller="App" asp-action="Contact">Contact</a></li>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="App" asp-action="Patients">Patients</a></li>
+                <li><a asp-controller="Auth" asp-action="Logout">Logout</a></li>
+                //<li>@User.Identity.Name</li>
+            }
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <li><a asp-controller="Auth" asp-action="Login">SignIn</a></li>
+                <li><a asp-controller="Auth" asp-action="Register">Register</a></li>
+            }
+        </ul>
+    </div>
+    <div id="main">
+            @RenderBody()    
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    @RenderSection("Scripts", false)
+</body>
+</html>

@@ -1,0 +1,5 @@
+{
+   "ConnectionStrings": {
+     "MedContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=AuthDb;Trusted_Connection=true;MultipleActiveResultSets=true;"
+   }
+}
